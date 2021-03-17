@@ -1,25 +1,15 @@
 
 function [K, tau] = motor_parameters()
 
-% GYROSCOPE TEST!!!
-data = load("mats/sinetest150.mat");
+[gain150, omega150] = magnitudes("mats/sinetest150.mat")
 
-data.omega
-% plot(data.t, data.input/100, 'DisplayName', 'input')
-% hold on
-% plot(data.t, data.outputL, 'DisplayName', 'outputL')
-% plot(data.t, data.outputR, 'DisplayName', 'outputR')
-% legend
+[gain200, omega200] = magnitudes("mats/sinetest200.mat")
 
-% fitfunc = @(a, b, c, x) a*sin(b*x-c)
-coeffs = fit([data.t; data.t], [data.outputL; data.outputR], 'sin1')
+syms K_sym tau_sym
 
-[input_pks,not_] = findpeaks(data.input, data.t);
-input_height = mean(input_pks);
+eqns = [K_sym / (tau_sym^2 * omega150^2 + 1) == gain150,
+    K_sym / (tau_sym^2 * omega200^2 + 1) == gain200]
 
-output_height = coeffs.a1;
+solns = solve(eqns, [K_sym, tau_sym])
 
-K = output_height / input_height;
-
-tau = coeffs.b1;
 end
