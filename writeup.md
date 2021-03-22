@@ -113,14 +113,30 @@ case, $\tau = 0.0611\ \textrm{s}$.
 
 ## PI Control
 
-To control the feedback loop, we implemented a proportional integral controller. To find the two gain values, we first chose the desired poles of our system. The four chosen poles were $-1 \pm \omega_n i$ and two poles at $-\omega_n$. The first two poles were chosen to quickly damp oscillations at the robot's natural frequency, which is a frequency likely to be present. The second poles were chosen to have the robot damp all oscillations more quickly while letting the first two dominate the response.
+To control the feedback loop, we implemented a proportional
+integral controller. To find the two gain values, we first
+chose the desired poles of our system. The four chosen poles
+were $-1 \pm \omega_n i$ and two poles at $-\omega_n$.
+The first two poles were chosen to quickly damp oscillations
+at the robot's natural frequency, which is a frequency likely
+to be present. The second poles were chosen to have the robot
+damp all oscillations more quickly while letting the first two
+dominate the response.
 
-### INCLUDE BASE SYSTEM BLOCK DIAGRAM HERE!
-
+![Base System Diagram](images/system-1.png)
 
 # Enhanced Model
 
-For our enhanced model, we decided to control the rotation of the robot by controlling its desired angle. We wanted the robot to oscillate back and forth without losing its ability to remain upright. For our oscillations, we chose a formula of $\theta_d = 0.1 \times sin(2 \times \pi \times t) \times sin(20 \times 2 \times \pi \times t)$, although any reasonably sized input could be used.
-To ensure the robot would not lose any stability, we implemented a switch to set the desired angle to zero if the measured angle of the robot was larger than $0.25 rad$. This allows the robot to only do the desired oscillations when it's approximately upright.
+For our enhanced model, we decided to control the rotation of
+the robot by controlling its desired angle. We wanted the robot
+to oscillate back and forth without losing its ability to remain upright.
+For our oscillations, we chose a formula of
+$\theta_d = 0.1 \sin(2 \pi \cdot t) \sin(20 \cdot 2 \pi \cdot t)$,
+although any reasonably sized input could be used.
+To ensure the robot would not lose any stability, we implemented a
+switch to set the desired angle to zero if the measured angle of
+the robot was larger than $0.25\ \textrm{rad}$.
+This allows the robot to only do the desired oscillations when
+it's approximately upright.
 
-### INCLUDE ENHANCED SYSTEM BLOCK DIAGRAM HERE!
+![Enhanced System Diagram](images/system-3.png)
