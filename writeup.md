@@ -121,7 +121,7 @@ The first two poles were chosen to quickly damp oscillations
 at the robot's natural frequency, which is a frequency likely
 to be present. The second poles were chosen to have the robot
 damp all oscillations more quickly while letting the first two
-dominate the response. To calculate the gain values, the system's transfer function was calculated with $K_p$ and $K_i$ represented symbolically, the coefficients of thetransfer function's denominator are found using the poles we chose, and this equation is solved to calculate $K_p$ and $K_i$. The resulting values are $K_p = \SI{4.38e3}$ and $K_i = \SI{4.38e3}$.
+dominate the response. To calculate the gain values, the system's transfer function was calculated with $K_p$ and $K_i$ represented symbolically, the coefficients of thetransfer function's denominator are found using the poles we chose, and this equation is solved to calculate $K_p$ and $K_i$. The resulting values are $K_p = 4383$ and $K_i = 13155$.
 
 ![Base System Diagram](images/system-1.png)
 
